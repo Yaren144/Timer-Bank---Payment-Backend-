@@ -1,4 +1,4 @@
-# PostgreSQL. Versions 9.3 and up are supported.
+# Mysql. Versions 9.3 and up are supported.
 #
 # Install the pg driver:
 #   gem install pg
@@ -13,11 +13,15 @@
 # gem "pg"
 #
 default: &default
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
+  encoding: utf8mb4
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: YareN7*
+  host: localhost
 
 
 development:
