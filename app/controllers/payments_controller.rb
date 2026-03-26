@@ -1,9 +1,9 @@
 class PaymentsController < ApplicationController
   def create
-    user = User.find_by(email: params[:email])
-
-    unless user
-      render json: { error: "User not found" }, status: :not_found and return
+    user = User.find_or_create_by(email: params[:email]) do |u|
+      u.first_name = params[:email].split("@").first
+      u.last_name = "User"
+      u.time_credits = 0
     end
 
     unless valid_card?(params[:card_number])
